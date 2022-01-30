@@ -2,17 +2,17 @@ import sdk from "./1-initialize-sdk.js";
 
 // Grab the app module address.
 const appModule = sdk.getAppModule(
-  "INSERT_APP_MODULE_ADDRESS",
+  "0xb71C707B8f7261562A5c3A39f12436f116e8438f",
 );
 
 (async () => {
   try {
     const voteModule = await appModule.deployVoteModule({
       // Give your governance contract a name.
-      name: "NarutoDAO's Epic Proposals",
+      name: "MasksDAO's Epic Proposals",
 
       // This is the location of our governance token, our ERC-20 contract!
-      votingTokenAddress: "INSERT_TOKEN_MODULE_ADDRESS",
+      votingTokenAddress: "0xB6BbF723dAb0B2220E1d7F0dd5097f24CCb2a98A",
 
       // After a proposal is created, when can members start voting?
       // For now, we set this to immediately.
@@ -36,6 +36,6 @@ const appModule = sdk.getAppModule(
       voteModule.address,
     );
   } catch (err) {
-    console.log("Failed to deploy vote module", err);
+    console.error("Failed to deploy vote module", err);
   }
 })();

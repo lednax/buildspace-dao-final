@@ -3,12 +3,12 @@ import sdk from "./1-initialize-sdk.js";
 
 // This is our governance contract.
 const voteModule = sdk.getVoteModule(
-  "INSERT_VOTING_MODULE_ADDRESS",
+  "0x1dd88769EcBBB77e42De03e9DC995d828Ef03083",
 );
 
 // This is our ERC-20 contract.
 const tokenModule = sdk.getTokenModule(
-  "INSERT_TOKEN_MODULE_ADDRESS",
+  "0xB6BbF723dAb0B2220E1d7F0dd5097f24CCb2a98A",
 );
 
 (async () => {
@@ -30,6 +30,7 @@ const tokenModule = sdk.getTokenModule(
   try {
     // Grab our wallet's token balance, remember -- we hold basically the entire supply right now!
     const ownedTokenBalance = await tokenModule.balanceOf(
+      // The wallet address stored in your env file or Secrets section of Repl
       process.env.WALLET_ADDRESS
     );
 

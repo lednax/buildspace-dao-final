@@ -3,18 +3,18 @@ import sdk from "./1-initialize-sdk.js";
 
 // Our voting contract.
 const voteModule = sdk.getVoteModule(
-  "INSERT_VOTE_MODULE_ADDRESS",
+  "0x1dd88769EcBBB77e42De03e9DC995d828Ef03083",
 );
 
 // Our ERC-20 contract.
 const tokenModule = sdk.getTokenModule(
-  "INSERT_TOKEN_MODULE_ADDRESS",
+  "0xB6BbF723dAb0B2220E1d7F0dd5097f24CCb2a98A",
 );
 
 (async () => {
   try {
-    const amount = 420_000;
-    // Create proposal to mint 420,000 new token to the treasury.
+    const amount = 1_000_000;
+    // Create proposal to mint 1,000,000 new token to the treasury.
     await voteModule.propose(
       "Should the DAO mint an additional " + amount + " tokens into the treasury?",
       [
@@ -25,7 +25,7 @@ const tokenModule = sdk.getTokenModule(
           nativeTokenValue: 0,
           transactionData: tokenModule.contract.interface.encodeFunctionData(
             // We're doing a mint! And, we're minting to the voteModule, which is
-            // acting as our treasruy.
+            // acting as our treasury.
             "mint",
             [
               voteModule.address,
@@ -46,7 +46,7 @@ const tokenModule = sdk.getTokenModule(
 
   try {
     const amount = 6_900;
-    // Create proposal to transfer ourselves 6,900 token for being awesome.
+    // Create proposal to transfer ourselves 6,900 tokens for being awesome.
     await voteModule.propose(
       "Should the DAO transfer " +
       amount + " tokens from the treasury to " +
@@ -73,6 +73,6 @@ const tokenModule = sdk.getTokenModule(
       "✅ Successfully created proposal to reward ourselves from the treasury, let's hope people vote for it!"
     );
   } catch (error) {
-    console.error("failed to create first proposal", error);
+    console.error("failed to create second proposal", error);
   }
 })();
